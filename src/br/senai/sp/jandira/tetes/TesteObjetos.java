@@ -52,6 +52,7 @@ public class TesteObjetos {
 			}
 			
 		System.out.println("----------For Eanch----------");
+		
 		//For Eanch -> para cada 
 		for (Especialidade e : especialidades) {
 			System.out.println(e.getNome());
@@ -63,7 +64,9 @@ public class TesteObjetos {
 		PlanoDeSaude p1 = new PlanoDeSaude("Amil");
 		PlanoDeSaude p2 = new PlanoDeSaude("Bradesco");
 		PlanoDeSaude p3 = new PlanoDeSaude("Notredame");
+		
 		System.out.println("-----------FOR EANCH Planos----------");
+		
 		ArrayList<PlanoDeSaude> planos = new ArrayList<>();
 		planos.add(p1);
 		planos.add(p2);
@@ -78,7 +81,13 @@ public class TesteObjetos {
 		PlanoDeSaude xpto2 = new PlanoDeSaude();
 		
 		AgendaApp.main(args);
-		System.out.println("----" + PlanoDeSaude.getQuantidade());
+		
+		System.out.println("---" + PlanoDeSaude.getQuantidade());
+		System.out.println("total= " + Especialidade.getContador());
+		System.out.println(e1.getCodigo()+ "-" + e1.getNome());
+		System.out.println(e2.getCodigo()+ "-" + e2.getNome());
+		System.out.println(e3.getCodigo()+ "-" + e3.getNome());
+		System.out.println(e4.getCodigo()+ "-" + e4.getNome());
 	}
 	
 

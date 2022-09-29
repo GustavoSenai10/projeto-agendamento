@@ -27,8 +27,9 @@ public class Especialidade {
         
         
         }
-        //construtor defult
-        public Especialidade(){
+        
+       //construtor defult
+       public Especialidade(){
             this.contador++;
             this.codigo =contador;
         
@@ -38,35 +39,44 @@ public class Especialidade {
         
         
         }
+        public Integer getCodigo() {
+        	return codigo;
+        	
+        	
+        	
+        	
+        	
+        }
+        
         //métodos de acesso aos atributos 
         public void setNome(String nome ){
-            if (nome.length()>=3){
+            
+        	if (nome.length()>=3){
                 this.nome=nome;
         
-                    
+                JOptionPane.showMessageDialog(null, "Especialiade" + ">"+ nome + "<" +"setada com sucesso!");
+        	}else {
+				JOptionPane.showMessageDialog(null, nome + "não é um nome válido!\nDeve conter no minimo 3 letras");
+        	}
         }
         
-        
-        
+        public String getNome() {
+        	return nome;
+        	
+        	
         }
-	
-	//Nome da Especialidade
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	//Descrição da Especialidade
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	
-	
-	
-
+        
+        public void setDescricao (String descricao ) {
+        	if (descricao.length() >= 10) {
+        		this.descricao = descricao;
+			}else {
+				JOptionPane.showInternalMessageDialog(null, descricao+"não é válida para uma descrição!\n digite novamente!");
+			}
+        	
+        }
+        
+        public String getDescricao() {
+        		return this.descricao;
+        }
 	
 }

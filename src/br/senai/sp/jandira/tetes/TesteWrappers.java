@@ -13,42 +13,43 @@ public class TesteWrappers {
 
 		int a= 5;
 		
-		Integer b = 5;
+		Integer y = 5;
 		
 		Double x = 2.9;
 		
 		
 		ArrayList<Especialidade> especialidades = new ArrayList<>();
 		
-		Especialidade e1 = new Especialidade();
+		Especialidade e1 = new Especialidade("");
 		e1.setNome("Cardiologista");
 		e1.setDescricao("Não deixa ter um ataque");
 	
-		Especialidade e2 = new Especialidade();
+		Especialidade e2 = new Especialidade("");
 		e2.setNome("Gastroenterologia");
 		e2.setDescricao("Não deixa ficar com dor de barriga");
 		
 		especialidades.add(e1);
 		especialidades.add(e2);
 		
-		Especialidade e3 = new Especialidade();
+		Especialidade e3 = new Especialidade("");
 		e3.setNome("Fisioterapia");
 		e3.setDescricao("não deixa ficar com dor nas costas.");
 		
-		Especialidade e4 = new Especialidade();
+		especialidades.add(e3);
+		
+		Especialidade e4 = new Especialidade("");
 		e3.setNome("Clinico Geral");
 		e3.setDescricao("Cuida de Tudo");
 	
-		especialidades.add(e3);
-		especialidades.add(e4);
 		
-	
 		//Especialidade[] especialidade = {e1,e2,e3,e4};
+		
 		
 		Especialidade e5 = new Especialidade();
 		e5.setNome("pediatra");
 		e5.setDescricao("Sabe cuidar de criancinhas.");
 		
+		especialidades.add(e4);
 		especialidades.add(e5);
 		//especialidade[4] = e5;
 	
@@ -67,14 +68,14 @@ public class TesteWrappers {
 		
 		//queremos ver o nome de especialidade que está na posição 
 		//3 do Arraylist especialidade
+		
 		System.out.println(especialidades.get(3).getNome());
 		
 		//
 		especialidades.get(1).setNome("Teste");
 		System.out.println(especialidades.get(1).getNome());
 		
-		Especialidade nova = especialidades.get(2);
-		System.out.println();
+		Especialidade z = new Especialidade("Dentista", "Cuidados dente");
 	}
 
 }
