@@ -137,9 +137,6 @@ public class AgendaApp {
 		System.out.println("Data: " + agenda2.getData());
 		System.out.println("Hora: " + agenda2.getHoraDaConsulta());
 		
-		
-	
-	
 	}
 
 }

@@ -16,8 +16,7 @@ public class TesteObjetos {
 		e1.setNome("Cardiologista");
 		e1.setDescricao("Não deixa ter um ataque");
 	
-		Especialidade e2 = new Especialidade();
-		e2.setNome("Gastroenterologia");
+		Especialidade e2 = new Especialidade("Gastroenterologia");
 		e2.setDescricao("Não deixa ficar com dor de barriga");
 		
 		Especialidade e4= new Especialidade();
