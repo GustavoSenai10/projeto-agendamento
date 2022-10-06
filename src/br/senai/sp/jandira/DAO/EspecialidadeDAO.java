@@ -47,7 +47,19 @@ import java.util.ArrayList;
 	        especialidades.add(e);
 	    }
     
-
+            //método para criar uma lista inicial de especialidades
+            public  static void criarListaDeEspecialidades(){
+                Especialidade e1 = new Especialidade("Denstista", "cuida dos seus dentes");
+                Especialidade e2 = new Especialidade("piscologo", "cuida da cabeça");
+                Especialidade e3 = new Especialidade("Cardiologia", "cuida do coração");
+                Especialidade e4 = new Especialidade("Clinico Geral", "cuida de tudo um pouco");
+                
+            especialidades.add(e1);
+            especialidades.add(e2);
+            especialidades.add(e3);
+            especialidades.add(e4);
+            
+            }
 
 
 

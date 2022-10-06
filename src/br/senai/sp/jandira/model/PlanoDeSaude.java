@@ -11,28 +11,26 @@ public class PlanoDeSaude {
 	private	 String categoria;
 	private	String numero;
 	private LocalDate validade;
-	private int quantidade;
+	private static int quantidade;
 	
-	
-	//Operadora
-	public String getOperadora() {
-		return operadora;
-	}
-	public void setOperadora(String operadora) {
+	//métodos contrutores 
+        public PlanoDeSaude(String operadora) {
 		this.operadora = operadora;
-	}
-	
-	public PlanoDeSaude(String operadora) {
-			this.operadora = operadora;
-			
-		
-		
+		this.quantidade++;
 	}
 	
 	public PlanoDeSaude() {
 		this.quantidade++;
-		
-			
+	}
+	
+        //métodos
+        //Operadora
+	public void setOperadora(String operadora) {
+		this.operadora = operadora;
+	}
+
+	public String getOperadora() {
+		return operadora;
 	}
 	
 	//Categoria
@@ -57,13 +55,14 @@ public class PlanoDeSaude {
 	public LocalDate getValidade() {
 		return validade;
 	}
-	public void setValidade(LocalDate validade) {
+	
+        public void setValidade(LocalDate validade) {
 		this.validade = validade;
 	}
 	
 	//quantidade 
 	public static int getQuantidade() {
-		return getQuantidade();
+		return quantidade;
 	}
 	
 }

@@ -12,6 +12,29 @@ public class TesteObjetos {
 
 	public static void main(String[] args) {
 		
+            int[] a = {6,9,85,7};
+            int[] b = new int[4];
+            b[0]=7;
+            b[1]=6;
+            b[2]=5;
+            b[3]=4;
+            int [] [] c ={
+                {4,6,5},
+                {5,9,7},
+                {1,13,3},
+                {5,5,8}
+            };
+            String[][] quitanda ={
+                {"Bnana","Maçã","Uva","Morango"},
+                {"Alface","Couve","Pepino","Slasinha","Pimenta","Brócolis"},
+                {"Abacate","Tomate","jiló","Abobrinha"}
+            
+            };
+            System.out.println(quitanda[1][4]);
+            System.out.println("c[2][1]");
+            System.out.println("...........................");
+            
+            
 		Especialidade e1 = new Especialidade();
 		e1.setNome("Cardiologista");
 		e1.setDescricao("Não deixa ter um ataque");
