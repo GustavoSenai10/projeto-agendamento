@@ -5,6 +5,7 @@
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.DAO.EspecialidadeDAO;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -52,12 +53,13 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonHome = new javax.swing.JButton();
         panelHome = new javax.swing.JPanel();
         labelNomedaEmpresa = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabelSubTitulo = new javax.swing.JLabel();
+        jLabelContatos = new javax.swing.JLabel();
+        jPanelLinhaAmarela = new javax.swing.JPanel();
+        jLabelEmail = new javax.swing.JLabel();
+        jLabelTelefone = new javax.swing.JLabel();
+        jLabelSite = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Agendamento");
@@ -129,6 +131,11 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonSaida.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         buttonSaida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/saida-de-emergencia.png"))); // NOI18N
         buttonSaida.setToolTipText("Saír");
+        buttonSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSaidaActionPerformed(evt);
+            }
+        });
         getContentPane().add(buttonSaida);
         buttonSaida.setBounds(620, 110, 180, 40);
 
@@ -152,45 +159,55 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(buttonHome);
         buttonHome.setBounds(0, 110, 100, 40);
 
-        panelHome.setBackground(new java.awt.Color(102, 102, 102));
+        panelHome.setBackground(new java.awt.Color(51, 51, 51));
         panelHome.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", 0, 12), new java.awt.Color(255, 255, 0))); // NOI18N
         panelHome.setLayout(null);
 
         labelNomedaEmpresa.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        labelNomedaEmpresa.setForeground(new java.awt.Color(255, 255, 0));
         labelNomedaEmpresa.setText("TroiaV");
         panelHome.add(labelNomedaEmpresa);
-        labelNomedaEmpresa.setBounds(10, 30, 90, 26);
+        labelNomedaEmpresa.setBounds(10, 60, 90, 20);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setText("Sistema de Agentamento Para consulta");
-        panelHome.add(jLabel2);
-        jLabel2.setBounds(10, 50, 240, 14);
+        jLabelSubTitulo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabelSubTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelSubTitulo.setText("Sistema de Agentamento Para consulta");
+        panelHome.add(jLabelSubTitulo);
+        jLabelSubTitulo.setBounds(10, 80, 240, 14);
 
-        jLabel3.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
-        jLabel3.setText("Dados para contatos:");
-        panelHome.add(jLabel3);
-        jLabel3.setBounds(10, 100, 150, 20);
+        jLabelContatos.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        jLabelContatos.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelContatos.setText("Dados para contatos:");
+        panelHome.add(jLabelContatos);
+        jLabelContatos.setBounds(630, 120, 150, 20);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 102));
-        panelHome.add(jPanel1);
-        jPanel1.setBounds(0, 70, 800, 10);
+        jPanelLinhaAmarela.setBackground(new java.awt.Color(255, 255, 102));
+        panelHome.add(jPanelLinhaAmarela);
+        jPanelLinhaAmarela.setBounds(0, 100, 800, 2);
 
-        jLabel4.setText("E-mail: TroiaV5@gmail.com");
-        panelHome.add(jLabel4);
-        jLabel4.setBounds(10, 120, 160, 16);
+        jLabelEmail.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelEmail.setText("E-mail: TroiaV5@gmail.com");
+        panelHome.add(jLabelEmail);
+        jLabelEmail.setBounds(630, 140, 160, 16);
 
-        jLabel5.setText("Telefone: (11) 4002-8922");
-        panelHome.add(jLabel5);
-        jLabel5.setBounds(10, 140, 140, 16);
+        jLabelTelefone.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTelefone.setText("Telefone: (11) 4002-8922");
+        panelHome.add(jLabelTelefone);
+        jLabelTelefone.setBounds(630, 160, 140, 16);
 
-        jLabel6.setText("Site: www.Troia.com.br");
-        panelHome.add(jLabel6);
-        jLabel6.setBounds(10, 160, 140, 16);
+        jLabelSite.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelSite.setText("Site: www.Troia.com.br");
+        panelHome.add(jLabelSite);
+        jLabelSite.setBounds(630, 180, 140, 16);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/cavalo-de-troia.png"))); // NOI18N
+        panelHome.add(jLabel1);
+        jLabel1.setBounds(300, 30, 70, 70);
 
         getContentPane().add(panelHome);
-        panelHome.setBounds(0, 170, 800, 290);
+        panelHome.setBounds(0, 170, 800, 280);
 
-        setSize(new java.awt.Dimension(816, 467));
+        setSize(new java.awt.Dimension(816, 512));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -220,6 +237,12 @@ public class HomeFrame extends javax.swing.JFrame {
         panelHome.setVisible(false);
     }//GEN-LAST:event_buttonEspecialidadesActionPerformed
 
+    private void buttonSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaidaActionPerformed
+        JOptionPane.showConfirmDialog(null, "Tem certeza Que deseja sair", "Sair do Aplicativo", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE);
+        dispose();
+    
+    }//GEN-LAST:event_buttonSaidaActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -232,12 +255,13 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JButton buttonSaida;
     private javax.swing.JPanel header;
     private javax.swing.JLabel iconeDaAgenda;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelContatos;
+    private javax.swing.JLabel jLabelEmail;
+    private javax.swing.JLabel jLabelSite;
+    private javax.swing.JLabel jLabelSubTitulo;
+    private javax.swing.JLabel jLabelTelefone;
+    private javax.swing.JPanel jPanelLinhaAmarela;
     private javax.swing.JLabel labelNomedaEmpresa;
     private javax.swing.JPanel panelHome;
     private javax.swing.JLabel tituloDoHeader;

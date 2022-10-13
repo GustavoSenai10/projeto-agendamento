@@ -5,6 +5,8 @@
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.DAO.EspecialidadeDAO;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,6 +21,7 @@ public class JPanelEspecialidades extends javax.swing.JPanel {
     public JPanelEspecialidades() {
         initComponents();
         EspecialidadeDAO.criarListaDeEspecialidades();
+        ajustarTabela();
         prenccherTabela();
         
          
@@ -39,7 +42,8 @@ public class JPanelEspecialidades extends javax.swing.JPanel {
         buttonEditar = new javax.swing.JButton();
         buttonAdicionar = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Especialidades ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        setBackground(new java.awt.Color(51, 51, 51));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Especialidades ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 1, 14), new java.awt.Color(255, 255, 0))); // NOI18N
         setPreferredSize(new java.awt.Dimension(800, 290));
         setLayout(null);
 
@@ -61,6 +65,11 @@ public class JPanelEspecialidades extends javax.swing.JPanel {
 
         buttonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/botao-x.png"))); // NOI18N
         buttonExcluir.setToolTipText("Excluir Especialidade");
+        buttonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExcluirActionPerformed(evt);
+            }
+        });
         add(buttonExcluir);
         buttonExcluir.setBounds(660, 240, 130, 40);
 
@@ -85,15 +94,46 @@ public class JPanelEspecialidades extends javax.swing.JPanel {
         buttonAdicionar.setBounds(400, 240, 130, 40);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
+        EspecialidadesJDialog d = new EspecialidadesJDialog(null, true);
+        d.setVisible(true);
+        prenccherTabela();
+
+    }//GEN-LAST:event_buttonAdicionarActionPerformed
+
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonEditarActionPerformed
 
-    private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
-        EspecialidadesJDialog d = new EspecialidadesJDialog(null, true);
-        d.setVisible(true);
-    }//GEN-LAST:event_buttonAdicionarActionPerformed
-
+    private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
+       int linha = tabelaDeEspecialidades.getSelectedRow();
+        if (linha != 1) {
+            
+            excluirEspecialidade(linha);
+        }else{
+            JOptionPane.showMessageDialog(this,
+                    "Por Favor,Selecione a especialidade que você deseja excluir!!",
+                    "Atenção",
+                    JOptionPane.WARNING_MESSAGE);
+        
+        
+        }
+        
+        
+    }//GEN-LAST:event_buttonExcluirActionPerformed
+    private void excluirEspecialidade(int linha){
+    
+    String codigoStr = tabelaDeEspecialidades.getValueAt(linha, 0).toString();
+       Integer codigo = Integer.valueOf(codigoStr);
+        
+       int resposta = JOptionPane.showConfirmDialog(this, "você confirma a exclusão?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+       EspecialidadeDAO.excluir(codigo);
+       
+       
+       prenccherTabela();
+    
+    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionar;
@@ -106,8 +146,25 @@ public class JPanelEspecialidades extends javax.swing.JPanel {
     private void prenccherTabela() {
 
         
-        tabelaDeEspecialidades.setModel(EspecialidadeDAO.getTabelaEspecialidades());
-        EspecialidadeDAO.criarListaDeEspecialidades(); 
+        tabelaDeEspecialidades.setModel(EspecialidadeDAO.getTabelaEspecialidades()); 
+        ajustarTabela();
     }
 
+    private  void ajustarTabela(){
+    
+        //Impedir que o usuario movemente as calunas
+        tabelaDeEspecialidades.getTableHeader().setReorderingAllowed(false);
+        
+        //bloquear a edição das celulas da tabela
+        tabelaDeEspecialidades.setDefaultEditor(Object.class, null);
+        
+        // Definir a largura das calunas
+        tabelaDeEspecialidades.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tabelaDeEspecialidades.getColumnModel().getColumn(0).setPreferredWidth(200);
+        tabelaDeEspecialidades.getColumnModel().getColumn(1).setPreferredWidth(300);
+        tabelaDeEspecialidades.getColumnModel().getColumn(2).setPreferredWidth(490);
+        
+    }
+    
+    
 }
