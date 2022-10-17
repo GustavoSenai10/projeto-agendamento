@@ -5,6 +5,7 @@
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.DAO.EspecialidadeDAO;
+import br.senai.sp.jandira.model.Especialidade;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -15,9 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JPanelEspecialidades extends javax.swing.JPanel {
 
-    /**
-     * Creates new form JPanelEspecialidades
-     */
+    private int linha;
     public JPanelEspecialidades() {
         initComponents();
         EspecialidadeDAO.criarListaDeEspecialidades();
@@ -26,6 +25,13 @@ public class JPanelEspecialidades extends javax.swing.JPanel {
         
          
     }
+
+    private int getLinha() {
+        linha = tabelaDeEspecialidades.getSelectedRow();
+        return linha;
+    }
+     
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,6 +101,7 @@ public class JPanelEspecialidades extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
+        
         EspecialidadesJDialog d = new EspecialidadesJDialog(null, true);
         d.setVisible(true);
         prenccherTabela();
@@ -102,36 +109,66 @@ public class JPanelEspecialidades extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonAdicionarActionPerformed
 
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
-        // TODO add your handling code here:
+        if (getLinha() != -1) {
+            editarEspecialidade();
+        }else{
+            JOptionPane.showConfirmDialog(this, "Por favor Selecione a especialidade que você deseja editar.", 
+                    "Especialidade",
+                    JOptionPane.WARNING_MESSAGE);
+        
+        }
+        
+        EspecialidadesJDialog especialidade = 
+               new EspecialidadesJDialog(null, true);
+       
+       especialidade.setVisible(true);
+       prenccherTabela();
     }//GEN-LAST:event_buttonEditarActionPerformed
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
-       int linha = tabelaDeEspecialidades.getSelectedRow();
-        if (linha != 1) {
-            
-            excluirEspecialidade(linha);
+        
+        if (getLinha() != 1) {
+            excluirEspecialidade();
         }else{
             JOptionPane.showMessageDialog(this,
                     "Por Favor,Selecione a especialidade que você deseja excluir!!",
                     "Atenção",
                     JOptionPane.WARNING_MESSAGE);
         
-        
         }
         
         
     }//GEN-LAST:event_buttonExcluirActionPerformed
-    private void excluirEspecialidade(int linha){
-    
-    String codigoStr = tabelaDeEspecialidades.getValueAt(linha, 0).toString();
-       Integer codigo = Integer.valueOf(codigoStr);
+   
+    private void editarEspecialidade(){
         
-       int resposta = JOptionPane.showConfirmDialog(this, "você confirma a exclusão?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-       EspecialidadeDAO.excluir(codigo);
+        Especialidade especialidade = EspecialidadeDAO.getEspecialidade(getCodigo());
+        
+        EspecialidadesJDialog especialidadesJDialog = 
+               new EspecialidadesJDialog(null, true, especialidade);
        
-       
+       especialidadesJDialog.setVisible(true);
        prenccherTabela();
+        
+        }
     
+    private void excluirEspecialidade(){
+      
+       int resposta = JOptionPane.showConfirmDialog(this, "você confirma a exclusão?",
+               "Atenção",
+               JOptionPane.YES_NO_OPTION,
+               JOptionPane.QUESTION_MESSAGE);
+       
+        if (resposta == 0) {
+            EspecialidadeDAO.excluir(getCodigo());
+            prenccherTabela();
+        }
+    }
+    
+    private Integer getCodigo (){
+       String codigoStr = tabelaDeEspecialidades.getValueAt(getLinha(), 0).toString();
+       Integer codigo = Integer.valueOf(codigoStr);
+       return codigo;
     
     }
 

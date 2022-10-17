@@ -4,16 +4,16 @@ import javax.swing.JOptionPane;
 
 
 public class Especialidade {
-        private  static int contador;
-	private String nome;
+        private  static int contador = 1;
+        private String nome;
         private Integer codigo;
-	private String descricao;
+        private String descricao;
 	
 	
         //contrutor da class
         public Especialidade(String nome){
-            this.contador++;
-            this.nome=nome;
+           this.nome = nome;
+           gerarCodigo();
         
         
         
@@ -22,30 +22,30 @@ public class Especialidade {
         public  Especialidade (String nome, String descricao){
             this.nome= nome;
             this.descricao = descricao;
-            this.contador++;
-            this.codigo =contador;
+            gerarCodigo();
         
         
         }
         
        //construtor defult
        public Especialidade(){
-            this.contador++;
-            this.codigo =contador;
+            gerarCodigo();
         
         }
+       private void gerarCodigo(){
+           this.contador++;
+           this.codigo=contador;
+       
+       }
         public static int getContador(){
             return contador;
-        
-        
+      
         }
         public Integer getCodigo() {
         	return codigo;
-        	
-        	
-        	
-        	
-        	
+        }
+        public void setCodigo(Integer codigo){
+             this.codigo =codigo;
         }
         
         //métodos de acesso aos atributos 

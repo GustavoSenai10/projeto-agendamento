@@ -37,6 +37,7 @@ import javax.swing.table.DefaultTableModel;
 	            if (correta.getCodigo() == e.getCodigo()){
 	                int posicao = especialidades.indexOf(e);
 	                especialidades.set(posicao, correta);
+                        break;
 	            }
 	        }
 	    }
