@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 	        return null;
 	    }
 	    
-	    public static void excluir(Integer codigo) {
+	    public static void excluir(Integer codigo) {    //excluir
 	        for(Especialidade e : especialidades ) {
 	         if (codigo != e.getCodigo()) {
 	            especialidades.remove(e);
@@ -32,7 +32,7 @@ import javax.swing.table.DefaultTableModel;
 	    }
 	    }
 	    
-	    public static void atualizar (Especialidade correta){
+	    public static void atualizar (Especialidade correta){   //atualizar
 	        for (Especialidade e : especialidades ) {
 	            if (correta.getCodigo() == e.getCodigo()){
 	                int posicao = especialidades.indexOf(e);
@@ -45,7 +45,7 @@ import javax.swing.table.DefaultTableModel;
 	    
 	    
 	    
-	    public static void gravar(Especialidade e) {
+	    public static void gravar(Especialidade e) {    //Gravar
 	        especialidades.add(e);
 	    }
     

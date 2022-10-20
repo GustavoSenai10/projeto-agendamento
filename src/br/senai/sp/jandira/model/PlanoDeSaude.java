@@ -8,8 +8,8 @@ import javax.swing.JOptionPane;
 public class PlanoDeSaude {
 
 	private String operadora; 
-	private	 String categoria;
-	private	String numero;
+	private String categoria;
+	private String numero;
 	private LocalDate validade;
 	private static int quantidade;
 	

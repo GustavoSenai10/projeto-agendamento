@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 
 public class Especialidade {
-        private  static int contador = 1;
+        private  static int contador = 0;
         private String nome;
         private Integer codigo;
         private String descricao;

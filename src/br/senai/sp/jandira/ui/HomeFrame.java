@@ -26,6 +26,7 @@ public class HomeFrame extends javax.swing.JFrame {
     //Atributos da class
     JPanelEspecialidades panelEspecialidades;
     
+    
     //constantes
     private final int pos_X = 0;
     private final int pos_Y = 170;
@@ -205,7 +206,7 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabel1.setBounds(300, 30, 70, 70);
 
         getContentPane().add(panelHome);
-        panelHome.setBounds(0, 170, 800, 280);
+        panelHome.setBounds(0, 150, 800, 290);
 
         setSize(new java.awt.Dimension(816, 512));
         setLocationRelativeTo(null);
@@ -240,7 +241,6 @@ public class HomeFrame extends javax.swing.JFrame {
     private void buttonSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaidaActionPerformed
         JOptionPane.showConfirmDialog(null, "Tem certeza Que deseja sair", "Sair do Aplicativo", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE);
         dispose();
-    
     }//GEN-LAST:event_buttonSaidaActionPerformed
 
    
@@ -281,4 +281,5 @@ public class HomeFrame extends javax.swing.JFrame {
        panelEspecialidades.setVisible(false);
     
     }
+   
 }

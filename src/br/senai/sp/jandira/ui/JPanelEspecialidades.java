@@ -1,19 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.DAO.EspecialidadeDAO;
 import br.senai.sp.jandira.model.Especialidade;
+import br.senai.sp.jandira.model.OperacaoEnum;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author 22282225
- */
+
 public class JPanelEspecialidades extends javax.swing.JPanel {
 
     private int linha;
@@ -102,7 +97,7 @@ public class JPanelEspecialidades extends javax.swing.JPanel {
 
     private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
         
-        EspecialidadesJDialog d = new EspecialidadesJDialog(null, true);
+        EspecialidadesJDialog d = new EspecialidadesJDialog(null, true,OperacaoEnum.ADICIONA);
         d.setVisible(true);
         prenccherTabela();
 
@@ -119,7 +114,7 @@ public class JPanelEspecialidades extends javax.swing.JPanel {
         }
         
         EspecialidadesJDialog especialidade = 
-               new EspecialidadesJDialog(null, true);
+               new EspecialidadesJDialog(null, true,OperacaoEnum.EDITAR);
        
        especialidade.setVisible(true);
        prenccherTabela();
@@ -145,7 +140,7 @@ public class JPanelEspecialidades extends javax.swing.JPanel {
         Especialidade especialidade = EspecialidadeDAO.getEspecialidade(getCodigo());
         
         EspecialidadesJDialog especialidadesJDialog = 
-               new EspecialidadesJDialog(null, true, especialidade);
+               new EspecialidadesJDialog(null, true, especialidade,OperacaoEnum.EDITAR);
        
        especialidadesJDialog.setVisible(true);
        prenccherTabela();
