@@ -25,13 +25,18 @@ public class HomeFrame extends javax.swing.JFrame {
     }
     //Atributos da class
     JPanelEspecialidades panelEspecialidades;
-    
+    JPanelPlanoDeSaude panelPlanoDeSaude;
     
     //constantes
     private final int pos_X = 0;
     private final int pos_Y = 170;
     private final int LARGURA = 800;
     private final int ALATURA = 290;
+    
+    
+    
+     
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -221,7 +226,9 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonMédicoActionPerformed
 
     private void buttonPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanoDeSaudeActionPerformed
-        
+          panelEspecialidades.setVisible(false);
+           panelPlanoDeSaude.setVisible(true);
+           panelHome.setVisible(false);
     }//GEN-LAST:event_buttonPlanoDeSaudeActionPerformed
 
     private void buttonPascienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPascienteActionPerformed
@@ -229,6 +236,7 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPascienteActionPerformed
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
+        panelPlanoDeSaude.setVisible(false);
         panelEspecialidades.setVisible(false);
         panelHome.setVisible(true);
     }//GEN-LAST:event_buttonHomeActionPerformed
@@ -236,6 +244,7 @@ public class HomeFrame extends javax.swing.JFrame {
     private void buttonEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesActionPerformed
         panelEspecialidades.setVisible(true);
         panelHome.setVisible(false);
+        panelPlanoDeSaude.setVisible(false);
     }//GEN-LAST:event_buttonEspecialidadesActionPerformed
 
     private void buttonSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaidaActionPerformed
@@ -279,7 +288,22 @@ public class HomeFrame extends javax.swing.JFrame {
         
        getContentPane().add(panelEspecialidades);
        panelEspecialidades.setVisible(false);
+       
+       panelPlanoDeSaude  = new JPanelPlanoDeSaude();
+    
+        panelPlanoDeSaude.setBounds(
+                pos_X,
+               pos_Y,
+               LARGURA,
+               ALATURA);
+        
+       getContentPane().add(panelPlanoDeSaude);
+       panelPlanoDeSaude.setVisible(false);
     
     }
    
+     
+    
+       
+     
 }

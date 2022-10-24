@@ -116,6 +116,7 @@ public class EspecialidadesJDialog extends javax.swing.JDialog {
         jPanelDetalhesDaEspecialidades.add(jLabelNomeDaEspecialidade);
         jLabelNomeDaEspecialidade.setBounds(20, 120, 140, 16);
 
+        jTextFieldNomeDaEspecialidade.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldNomeDaEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNomeDaEspecialidadeActionPerformed(evt);
