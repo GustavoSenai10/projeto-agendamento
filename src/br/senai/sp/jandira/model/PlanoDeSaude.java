@@ -12,21 +12,45 @@ public class PlanoDeSaude {
 	private String numero;
 	private LocalDate validade;
 	private static int quantidade;
+	private static int contador = 0;
+	private Integer codigoP;
 	
-	//métodos contrutores 
-        public PlanoDeSaude(String operadora) {
-		this.operadora = operadora;
-		this.quantidade++;
+	
+		
+	
+	             //Métodos Construtores 
+		
+	private void gerarCodigo() {
+		this.contador++;
+		this.codigoP = contador;
 	}
 	
+	//Default
 	public PlanoDeSaude() {
-		this.quantidade++;
+		gerarCodigo();
+		
+	}	
+	
+    public PlanoDeSaude(String operadora) {
+		this.operadora = operadora;
+		gerarCodigo();
 	}
 	
-        //métodos
-        //Operadora
+	public PlanoDeSaude(String operadora, String categoria,String nuemro, LocalDate validade) {
+		this.operadora = operadora;
+		this.categoria=categoria;
+		this.numero = nuemro;
+		this.validade= validade;
+		gerarCodigo();
+
+	}
+	
+                 //MÉTODOS 
+        
+	//Operadora
 	public void setOperadora(String operadora) {
 		this.operadora = operadora;
+		gerarCodigo();
 	}
 
 	public String getOperadora() {
