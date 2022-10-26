@@ -111,13 +111,14 @@ public class JPanelEspecialidades extends javax.swing.JPanel {
                     "Especialidade",
                     JOptionPane.WARNING_MESSAGE);
         
-        }
-        
-        EspecialidadesJDialog especialidade = 
+             EspecialidadesJDialog especialidade = 
                new EspecialidadesJDialog(null, true,OperacaoEnum.EDITAR);
        
        especialidade.setVisible(true);
        prenccherTabela();
+        }
+        
+       
     }//GEN-LAST:event_buttonEditarActionPerformed
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed

@@ -108,7 +108,7 @@ public class JPanelPlanoDeSaude extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
-         if (getLinha() != 0) {
+         if (getLinha() != -1) {
             excluirPlanoDeSaude();
         }else{
             JOptionPane.showMessageDialog(this,
@@ -127,13 +127,13 @@ public class JPanelPlanoDeSaude extends javax.swing.JPanel {
                     "Especialidade",
                     JOptionPane.WARNING_MESSAGE);
         
-        }
-        
-        PlanoDeSaudeJDialog plano = 
+       PlanoDeSaudeJDialog plano = 
                new PlanoDeSaudeJDialog(null, true,OperacaoEnum.EDITAR);
        
        plano.setVisible(true);
-       prenccherTabela();
+       prenccherTabela(); 
+       
+       }  
     }//GEN-LAST:event_buttonEditarActionPerformed
 
     private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
@@ -197,12 +197,6 @@ public class JPanelPlanoDeSaude extends javax.swing.JPanel {
         
         //bloquear a edição das celulas da tabela
         tabelaPlanoDeSaude.setDefaultEditor(Object.class, null);
-        
-        // Definir a largura das calunas
-        tabelaPlanoDeSaude.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        tabelaPlanoDeSaude.getColumnModel().getColumn(0).setPreferredWidth(200);
-        tabelaPlanoDeSaude.getColumnModel().getColumn(1).setPreferredWidth(300);
-        tabelaPlanoDeSaude.getColumnModel().getColumn(2).setPreferredWidth(490);
         
     }
 

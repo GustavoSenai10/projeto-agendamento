@@ -248,8 +248,7 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonEspecialidadesActionPerformed
 
     private void buttonSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaidaActionPerformed
-        JOptionPane.showConfirmDialog(null, "Tem certeza Que deseja sair", "Sair do Aplicativo", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE);
-        dispose();
+        panelHome.setVisible(true);
     }//GEN-LAST:event_buttonSaidaActionPerformed
 
    

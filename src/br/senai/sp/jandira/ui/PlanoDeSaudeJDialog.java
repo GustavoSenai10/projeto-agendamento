@@ -37,8 +37,11 @@ public class PlanoDeSaudeJDialog extends javax.swing.JDialog {
         public void preencherFormulario(){
         
         jTextFieldCódigo.setText(planoDeSaude.getCodigo().toString());
-        jTextFieldOperadora.setText(planoDeSaude.getNumero());
-        jTextFieldNumero.setText(planoDeSaude.getCategoria());
+        jTextFieldOperadora.setText(planoDeSaude.getOperadora());
+        jTextFieldCategoria.setText(planoDeSaude.getCategoria());
+        jTextFieldNumero.setText(planoDeSaude.getNumero());
+        jTextFieldValidade.setText(planoDeSaude.getValidade().toString());
+        
         
     }
         private void preencherTitulo(){
@@ -72,7 +75,7 @@ public class PlanoDeSaudeJDialog extends javax.swing.JDialog {
         jButtonSalvar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jLabelCategoria = new javax.swing.JLabel();
-        jTextFieldCadegoria = new javax.swing.JTextField();
+        jTextFieldCategoria = new javax.swing.JTextField();
         jLabelValidade = new javax.swing.JLabel();
         jTextFieldValidade = new javax.swing.JTextField();
 
@@ -164,13 +167,13 @@ public class PlanoDeSaudeJDialog extends javax.swing.JDialog {
         jPanelDetalhesDaEspecialidades.add(jLabelCategoria);
         jLabelCategoria.setBounds(370, 90, 70, 16);
 
-        jTextFieldCadegoria.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCadegoriaActionPerformed(evt);
+                jTextFieldCategoriaActionPerformed(evt);
             }
         });
-        jPanelDetalhesDaEspecialidades.add(jTextFieldCadegoria);
-        jTextFieldCadegoria.setBounds(370, 110, 110, 22);
+        jPanelDetalhesDaEspecialidades.add(jTextFieldCategoria);
+        jTextFieldCategoria.setBounds(370, 110, 110, 22);
 
         jLabelValidade.setForeground(new java.awt.Color(255, 255, 255));
         jLabelValidade.setText("Validade :");
@@ -186,9 +189,9 @@ public class PlanoDeSaudeJDialog extends javax.swing.JDialog {
         jTextFieldValidade.setBounds(370, 170, 100, 22);
 
         getContentPane().add(jPanelDetalhesDaEspecialidades);
-        jPanelDetalhesDaEspecialidades.setBounds(10, 90, 690, 340);
+        jPanelDetalhesDaEspecialidades.setBounds(10, 90, 690, 350);
 
-        setBounds(0, 0, 732, 453);
+        setBounds(0, 0, 732, 459);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldCódigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCódigoActionPerformed
@@ -206,7 +209,7 @@ public class PlanoDeSaudeJDialog extends javax.swing.JDialog {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         if (operacao ==  OperacaoEnum.ADICIONA) {
             adicionar();
-
+ 
         }else{
              editar();
         }
@@ -221,20 +224,20 @@ public class PlanoDeSaudeJDialog extends javax.swing.JDialog {
        
     }//GEN-LAST:event_jTextFieldValidadeActionPerformed
 
-    private void jTextFieldCadegoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCadegoriaActionPerformed
+    private void jTextFieldCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCategoriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCadegoriaActionPerformed
+    }//GEN-LAST:event_jTextFieldCategoriaActionPerformed
     private void adicionar(){
         
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         
-        PlanoDeSaude Plano = new PlanoDeSaude();
-       Plano.setOperadora(jTextFieldOperadora.getText());
-       Plano.setCategoria(jTextFieldCadegoria.getText());
-       Plano.setNumero(jTextFieldNumero.getText());        
-       Plano.setValidade(LocalDate.parse(jTextFieldValidade.getText(), formato));
+        PlanoDeSaude plano = new PlanoDeSaude();
+       plano.setOperadora(jTextFieldOperadora.getText());
+       plano.setCategoria(jTextFieldCategoria.getText());
+       plano.setNumero(jTextFieldNumero.getText());        
+       plano.setValidade(LocalDate.parse(jTextFieldValidade.getText(), formato));
         
-        PlanoDeSaudeDAO.gravar(Plano);
+        PlanoDeSaudeDAO.gravar(plano);
         
         JOptionPane.showMessageDialog(
                 this,
@@ -249,12 +252,13 @@ public class PlanoDeSaudeJDialog extends javax.swing.JDialog {
     private void editar(){
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         
+      
         planoDeSaude.setOperadora(jTextFieldOperadora.getText());
-        planoDeSaude.setCategoria(jTextFieldCadegoria.getText());
+        planoDeSaude.setCategoria(jTextFieldCategoria.getText());
         planoDeSaude.setNumero(jTextFieldNumero.getText());
         planoDeSaude.setValidade(LocalDate.parse(jTextFieldValidade.getText(), formato));
         
-        PlanoDeSaudeDAO.gravar(planoDeSaude);
+        PlanoDeSaudeDAO.atualizar(planoDeSaude);
         
         JOptionPane.showMessageDialog(
                 this,
@@ -277,7 +281,7 @@ public class PlanoDeSaudeJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelValidade;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelDetalhesDaEspecialidades;
-    private javax.swing.JTextField jTextFieldCadegoria;
+    private javax.swing.JTextField jTextFieldCategoria;
     private javax.swing.JTextField jTextFieldCódigo;
     private javax.swing.JTextField jTextFieldNumero;
     private javax.swing.JTextField jTextFieldOperadora;
