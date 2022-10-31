@@ -11,32 +11,32 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.DateFormatter;
 
 public class PlanoDeSaudeDAO {
-
+    
     private static ArrayList<PlanoDeSaude> planoDeSaude = new ArrayList<>();
-
+    
     public static ArrayList<PlanoDeSaude> getplanoDeSaude() {
         return planoDeSaude;
     }
-
+    
     public static PlanoDeSaude getPlanoDeSaude(Integer codigo) {
         for (PlanoDeSaude p : planoDeSaude) {
-            if (p.getCodigo() == p.getCodigo()) {
+            if (p.getCodigo().equals(codigo)) {
                 return p;
             }
         }
         return null;
     }
-
+    
     public static void excluir(Integer codigo) {    //excluir
         for (PlanoDeSaude p : planoDeSaude) {
-            if (codigo != p.getCodigo()) {
+            if (p.getCodigo().equals(codigo)) {
                 planoDeSaude.remove(p);
-            break;
+                break;
             }
             
         }
     }
-
+    
     public static void atualizar(PlanoDeSaude correta) {   //atualizar
         for (PlanoDeSaude p : planoDeSaude) {
             if (correta.getCodigo() == p.getCodigo()) {
@@ -46,7 +46,7 @@ public class PlanoDeSaudeDAO {
             }
         }
     }
-
+    
     public static void gravar(PlanoDeSaude p) {    //Gravar
         getplanoDeSaude().add(p);
     }
@@ -55,18 +55,18 @@ public class PlanoDeSaudeDAO {
     public static void criarListaDePlanoDeSaude() {
         PlanoDeSaude p1 = new PlanoDeSaude("Bradeco", "Broze", "14", LocalDate.of(2030, 07, 12));
         PlanoDeSaude p2 = new PlanoDeSaude("Amil", "Ferro", "20", LocalDate.of(2030, 05, 01));
-
+        
         planoDeSaude.add(p1);
         planoDeSaude.add(p2);
-
+        
     }
-
+    
     public static DefaultTableModel getTabelaPlanoDeSaude() {
-
+        
         System.out.println(planoDeSaude.size());
-        String[] titulo = {"CÓDIGO","OPERADORA", "CATEGÓRIA", "NÚMERO", "VALIDADE"};
+        String[] titulo = {"CÓDIGO", "OPERADORA", "CATEGÓRIA", "NÚMERO", "VALIDADE"};
         String[][] dados = new String[planoDeSaude.size()][5];
-
+        
         for (PlanoDeSaude p : planoDeSaude) {
             int i = planoDeSaude.indexOf(p);
             dados[i][0] = p.getCodigo().toString();
@@ -76,9 +76,9 @@ public class PlanoDeSaudeDAO {
             DateTimeFormatter padrao = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             dados[i][4] = p.getValidade().format(padrao);
         }
-
+        
         return new DefaultTableModel(dados, titulo);
-
+        
     }
-
+    
 }

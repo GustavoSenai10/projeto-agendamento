@@ -7,7 +7,6 @@ package br.senai.sp.jandira.ui;
 import br.senai.sp.jandira.DAO.EspecialidadeDAO;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author 22282225
@@ -20,24 +19,18 @@ public class HomeFrame extends javax.swing.JFrame {
     public HomeFrame() {
         initComponents();
         initPanel();
-        
-        
+
     }
     //Atributos da class
     JPanelEspecialidades panelEspecialidades;
     JPanelPlanoDeSaude panelPlanoDeSaude;
-    
+
     //constantes
     private final int pos_X = 0;
     private final int pos_Y = 170;
     private final int LARGURA = 800;
     private final int ALATURA = 290;
-    
-    
-    
-     
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -226,9 +219,9 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonMédicoActionPerformed
 
     private void buttonPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanoDeSaudeActionPerformed
-          panelEspecialidades.setVisible(false);
-           panelPlanoDeSaude.setVisible(true);
-           panelHome.setVisible(false);
+        panelEspecialidades.setVisible(false);
+        panelPlanoDeSaude.setVisible(true);
+        panelHome.setVisible(false);
     }//GEN-LAST:event_buttonPlanoDeSaudeActionPerformed
 
     private void buttonPascienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPascienteActionPerformed
@@ -248,10 +241,13 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonEspecialidadesActionPerformed
 
     private void buttonSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaidaActionPerformed
-        panelHome.setVisible(true);
+
+        JOptionPane.showMessageDialog(this, "Tem certeza que deseja sair do aplicatico", "Sair", JOptionPane.YES_NO_CANCEL_OPTION);
+        dispose();
+
+
     }//GEN-LAST:event_buttonSaidaActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAgendamento;
@@ -275,34 +271,30 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel tituloDoHeader;
     // End of variables declaration//GEN-END:variables
 
-    private void initPanel(){
-    
-       panelEspecialidades  = new JPanelEspecialidades();
-    
+    private void initPanel() {
+
+        panelEspecialidades = new JPanelEspecialidades();
+
         panelEspecialidades.setBounds(
                 pos_X,
-               pos_Y,
-               LARGURA,
-               ALATURA);
-        
-       getContentPane().add(panelEspecialidades);
-       panelEspecialidades.setVisible(false);
-       
-       panelPlanoDeSaude  = new JPanelPlanoDeSaude();
-    
+                pos_Y,
+                LARGURA,
+                ALATURA);
+
+        getContentPane().add(panelEspecialidades);
+        panelEspecialidades.setVisible(false);
+
+        panelPlanoDeSaude = new JPanelPlanoDeSaude();
+
         panelPlanoDeSaude.setBounds(
                 pos_X,
-               pos_Y,
-               LARGURA,
-               ALATURA);
-        
-       getContentPane().add(panelPlanoDeSaude);
-       panelPlanoDeSaude.setVisible(false);
-    
+                pos_Y,
+                LARGURA,
+                ALATURA);
+
+        getContentPane().add(panelPlanoDeSaude);
+        panelPlanoDeSaude.setVisible(false);
+
     }
-   
-     
-    
-       
-     
+
 }
