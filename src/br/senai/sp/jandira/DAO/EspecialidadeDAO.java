@@ -1,11 +1,25 @@
 package br.senai.sp.jandira.DAO;
 
 import br.senai.sp.jandira.model.Especialidade;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import jdk.dynalink.StandardOperation;
 
 public class EspecialidadeDAO {
 
+    private static final String URL = "C:\\Users\\22282225\\java\\Especialidade.txt";
+    private static final String URL_TEMP = "C:\\Users\\22282225\\java\\Especialidade-temp.txt";
+    private static final Path PATH = Paths.get(URL);
+    private static final Path PATH_TEMP = Paths.get(URL_TEMP);
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
 
     public static ArrayList<Especialidade> getEspecialidades() {
@@ -23,11 +37,42 @@ public class EspecialidadeDAO {
 
     public static void excluir(Integer codigo) {    //excluir
         for (Especialidade e : especialidades) {
-            if (codigo != e.getCodigo()) {
+            if (e.getCodigo().equals(codigo)) {
                 especialidades.remove(e);
+                break;
             }
-            break;
+
         }
+    }
+
+    public static void atualizarArquivo() {
+        //Passo  1- criar um representação dos arquivos que serão manipulados 
+        File arquivoAtual = new File(URL);
+        File arquivoTemp = new File(URL_TEMP);
+
+        try {
+            //Criar o arquivo temporario
+            arquivoTemp.createNewFile();
+
+            //abrir o arquivo temporario para escrita
+            BufferedWriter bwTemp = Files.newBufferedWriter(PATH_TEMP,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+            //Iterar na lista para adicionar as especialidades 
+            // no arquivo temporario , exceto o registro que 
+            //não queremos mais
+            for (Especialidade e : especialidades) {
+                bwTemp.write(e.getEspecialidadeSeparadaPorPontoEVirgula());
+                bwTemp.newLine();
+            }
+            bwTemp.close();
+            // deletar arquivo atual e renomear arquivo novo 
+            arquivoAtual.delete();
+            arquivoTemp.renameTo(arquivoAtual);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
 
     public static void atualizar(Especialidade correta) {   //atualizar
@@ -38,23 +83,52 @@ public class EspecialidadeDAO {
                 break;
             }
         }
+        atualizarArquivo();
     }
 
     public static void gravar(Especialidade e) {    //Gravar
         especialidades.add(e);
+        //Gravar no arquivo 
+        try {
+            BufferedWriter escritor = Files.newBufferedWriter(PATH,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+            escritor.write(e.getEspecialidadeSeparadaPorPontoEVirgula());
+            escritor.newLine();
+            escritor.close();
+        } catch (IOException erro) {
+            JOptionPane.showConfirmDialog(null, "Ocorreu um erro ou gravar");
+        }
     }
 
     //método para criar uma lista inicial de especialidades
     public static void criarListaDeEspecialidades() {
-        Especialidade e1 = new Especialidade("Denstista", "cuida dos seus dentes");
-        Especialidade e2 = new Especialidade("Piscologo", "cuida da cabeça");
-        Especialidade e3 = new Especialidade("Cardiologia", "cuida do coração");
-        Especialidade e4 = new Especialidade("Clinico Geral", "cuida de tudo um pouco");
+        //leitor
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH_TEMP);
 
-        especialidades.add(e1);
-        especialidades.add(e2);
-        especialidades.add(e3);
-        especialidades.add(e4);
+            String linha = leitor.readLine();
+
+            while (linha != null) {
+                // Trasformar os dados da linha em uma especialidade
+                String[] vetor = linha.split(";");
+
+                Especialidade e = new Especialidade(
+                        vetor[1],
+                        vetor[2],
+                        Integer.valueOf(vetor[0]));
+                // Guardar a especialidade na lista
+                especialidades.add(e);
+                //ler aproxima linha
+                linha = leitor.readLine();
+            }
+            leitor.close();
+        } catch (IOException e) {
+            JOptionPane.showConfirmDialog(
+                    null,
+                    "Ocorreu um erro ao ler o arquivo");
+        }
+        System.out.println(especialidades.size());
 
     }
 
