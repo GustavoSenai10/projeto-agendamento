@@ -116,7 +116,7 @@ public class PlanoDeSaudeDAO {
             String linha = leitorP.readLine();
 
             while (linha != null) {
-                //tranformar os dados da linha em um plano de súde
+                //transformar os dados da linha em um plano de saúde
                 String[] vetor = linha.split(";");
 
                 PlanoDeSaude p = new PlanoDeSaude(
