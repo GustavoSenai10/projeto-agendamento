@@ -157,9 +157,9 @@ public class EspecialidadesJDialog extends javax.swing.JDialog {
         jButtonCancelar.setBounds(520, 290, 70, 40);
 
         getContentPane().add(jPanelDetalhesDaEspecialidades);
-        jPanelDetalhesDaEspecialidades.setBounds(10, 90, 690, 340);
+        jPanelDetalhesDaEspecialidades.setBounds(0, 90, 720, 360);
 
-        setBounds(0, 0, 732, 453);
+        setBounds(0, 0, 740, 462);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldNomeDaEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeDaEspecialidadeActionPerformed

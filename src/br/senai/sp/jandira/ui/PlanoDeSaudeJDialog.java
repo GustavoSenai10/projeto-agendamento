@@ -151,7 +151,7 @@ public class PlanoDeSaudeJDialog extends javax.swing.JDialog {
             }
         });
         jPanelDetalhesDaEspecialidades.add(jButtonSalvar);
-        jButtonSalvar.setBounds(600, 290, 80, 40);
+        jButtonSalvar.setBounds(600, 300, 80, 40);
 
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/botao-x.png"))); // NOI18N
         jButtonCancelar.setToolTipText("Cancelar");
@@ -161,7 +161,7 @@ public class PlanoDeSaudeJDialog extends javax.swing.JDialog {
             }
         });
         jPanelDetalhesDaEspecialidades.add(jButtonCancelar);
-        jButtonCancelar.setBounds(520, 290, 70, 40);
+        jButtonCancelar.setBounds(510, 300, 70, 40);
 
         jLabelCategoria.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCategoria.setText("Categoria :");
@@ -190,7 +190,7 @@ public class PlanoDeSaudeJDialog extends javax.swing.JDialog {
         jTextFieldValidade.setBounds(370, 170, 100, 22);
 
         getContentPane().add(jPanelDetalhesDaEspecialidades);
-        jPanelDetalhesDaEspecialidades.setBounds(10, 90, 690, 350);
+        jPanelDetalhesDaEspecialidades.setBounds(10, 80, 690, 350);
 
         setBounds(0, 0, 732, 459);
     }// </editor-fold>//GEN-END:initComponents

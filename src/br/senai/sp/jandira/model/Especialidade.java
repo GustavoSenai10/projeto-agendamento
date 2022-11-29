@@ -1,5 +1,7 @@
 package br.senai.sp.jandira.model;
 
+import br.senai.sp.jandira.DAO.EspecialidadeDAO;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 public class Especialidade {
@@ -71,6 +73,10 @@ public class Especialidade {
         return nome;
 
     }
+    
+    public String toString(){
+        return this.nome;
+    }
 
     public void setDescricao(String descricao) {
         if (descricao.length() >= 10) {
@@ -84,6 +90,8 @@ public class Especialidade {
     public String getDescricao() {
         return this.descricao;
     }
+    
+
 
     public String getEspecialidadeSeparadaPorPontoEVirgula() {
         return this.codigo + ";" + this.nome + ";" + this.descricao;

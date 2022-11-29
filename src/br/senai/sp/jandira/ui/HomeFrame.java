@@ -207,7 +207,7 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(panelHome);
         panelHome.setBounds(0, 150, 800, 290);
 
-        setSize(new java.awt.Dimension(816, 512));
+        setSize(new java.awt.Dimension(816, 492));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

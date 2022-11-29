@@ -1,5 +1,7 @@
 package br.senai.sp.jandira.model;
 
+import java.time.LocalDate;
+
 public class Medico {
 
     private String nome;
@@ -7,6 +9,7 @@ public class Medico {
     private String telefone;
     private String email;
     private String crm;
+    private LocalDate dataDeNascimento;
     private static int contador = 0;
     private int codigo;
 
@@ -103,6 +106,15 @@ public class Medico {
         this.crm = crm;
     }
 
+    //Data de Nascimento
+    public LocalDate getdataDeNascimento() {
+        return dataDeNascimento;
+    }
+
+    public void setdataDeNascimento(LocalDate dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
+    }
+    
     public String getmedicoSeparadosPorPontoEVirgula() {
         return this.codigo + ";" + this.crm + ";" + this.telefone + ";" + this.especialidade + ";" + this.nome;
     }

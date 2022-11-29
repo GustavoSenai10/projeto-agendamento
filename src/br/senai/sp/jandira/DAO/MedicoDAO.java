@@ -105,7 +105,7 @@ public class MedicoDAO {
         }
     }
 
-    //  método para criar uma lista inicial de especialidade
+    // método para criar uma lista inicial de especialidade
     /*public static void criarListaDeMedicos() {
         //leitor
         try {
