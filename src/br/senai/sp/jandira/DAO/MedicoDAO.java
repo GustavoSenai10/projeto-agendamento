@@ -11,13 +11,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class MedicoDAO {
 
-    private static final String URL = "C:\\Users\\22282225\\java\\Medico";
+    private static final String URL = "C:\\Users\\22282225\\java\\Medico.txt";
     private static final String URL_TEMP = "C:\\Users\\22282225\\java\\Medico-temp.txt";
     private static final Path PATH = Paths.get(URL);
     private static final Path PATH_TEMP = Paths.get(URL_TEMP);
@@ -29,7 +30,7 @@ public class MedicoDAO {
 
     public static Medico getmedico(Integer codigo) {
         for (Medico m : medico) {
-            if (m.getCrm().equals(codigo)) {
+            if (m.getCodigo().equals(codigo)) {
                 return m;
             }
         }
@@ -106,38 +107,45 @@ public class MedicoDAO {
     }
 
     // método para criar uma lista inicial de especialidade
-    /*public static void criarListaDeMedicos() {
-        //leitor
+    public static void criarListaDeMedicos() {
         try {
-            BufferedReader leitorM = Files.newBufferedReader(PATH);
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+            String linha = leitor.readLine();
 
-            String linha = leitorM.readLine();
             while (linha != null) {
-                //Transformar os dados de linha em um medico
                 String[] vetor = linha.split(";");
 
-                Medico m = new Medico(vetor[1],
+                Medico m = new Medico(
+                        Integer.valueOf(vetor[0]),
+                        vetor[1],
                         vetor[2],
                         vetor[3],
-                        , Integer.valueOf(vetor[0]));
+                        LocalDate.parse(vetor[4]));
+                medico.add(m);
 
+                linha = leitor.readLine();
             }
-        }*/
+            leitor.close();
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, "Ocorreu um erro.");
+        }
+            System.out.println(medico.size());
+    }
 
-     public static DefaultTableModel getTabelaMedico() {
-    
-         System.out.println(medico.size());
-         String[] titulo = {"Codigo", "Nome","CRM","Telefone"};
-         String[][] dados = new String[medico.size()][4];
-         
-         for(Medico m : medico){
-             int i = medico.indexOf(m);
-             dados[i][0] = m.getCodigo().toString();
-             dados[i][1] = m.getNome();
-             dados[i][2] = m.getCrm();
-             dados[i][3] = m.getTelefone();
-         }
-         DefaultTableModel model = new DefaultTableModel(dados, titulo);
-         return model;
+    public static DefaultTableModel getTabelaMedico() {
+
+        System.out.println(medico.size());
+        String[] titulo = {"Codigo", "Nome", "CRM", "Telefone"};
+        String[][] dados = new String[medico.size()][4];
+
+        for (Medico m : medico) {
+            int i = medico.indexOf(m);
+            dados[i][0] = m.getCodigo().toString();
+            dados[i][1] = m.getCrm();
+            dados[i][2] = m.getNome();
+            dados[i][3] = m.getTelefone();
+        }
+        DefaultTableModel model = new DefaultTableModel(dados, titulo);
+        return model;
     }
 }

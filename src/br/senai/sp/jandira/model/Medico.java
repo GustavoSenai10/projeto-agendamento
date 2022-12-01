@@ -16,7 +16,7 @@ public class Medico {
     //Métodos Construtores
     private void gerarCodigo() {
         this.codigo = contador;
-        this.codigo++;
+        this.contador++;
     }
 
     //Default
@@ -26,7 +26,6 @@ public class Medico {
 
     public Medico(String crm) {
         this.crm = crm;
-        gerarCodigo();
     }
 
     public Medico(String nome,
@@ -41,16 +40,15 @@ public class Medico {
 
     }
 
-    public Medico(String nome,
+    public Medico( Integer codigo,
             String crm,
             String telefone,
-            Especialidade[] especialidades,
-            Integer codigo) {
+           String nome,LocalDate DataDeNascimeto) {
 
         this.crm = crm;
         this.nome = nome;
+        this.dataDeNascimento=DataDeNascimeto;
         this.telefone = telefone;
-        this.especialidade = especialidade;
         this.codigo = codigo;
         this.contador = codigo;
 
@@ -116,7 +114,7 @@ public class Medico {
     }
     
     public String getmedicoSeparadosPorPontoEVirgula() {
-        return this.codigo + ";" + this.crm + ";" + this.telefone + ";" + this.especialidade + ";" + this.nome;
+        return this.codigo + ";" + this.crm + ";" + this.nome + ";" + this.dataDeNascimento + ";" + this.telefone + ";" + this.especialidade;
     }
 
 }

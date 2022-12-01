@@ -31,7 +31,10 @@ public class PlanoDeSaude {
         gerarCodigo();
     }
 
-    public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade) {
+    public PlanoDeSaude(String operadora,
+            String categoria,
+            String numero,
+            LocalDate validade) {
         this.operadora = operadora;
         this.categoria = categoria;
         this.numero = numero;
@@ -39,7 +42,11 @@ public class PlanoDeSaude {
         gerarCodigo();
 
     }
-    public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade,Integer codigo) {
+    public PlanoDeSaude(String operadora,
+            String categoria,
+            String numero,
+            LocalDate validade,
+            Integer codigo) {
         this.operadora = operadora;
         this.categoria = categoria;
         this.numero = numero;

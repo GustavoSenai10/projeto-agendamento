@@ -4,25 +4,26 @@ import br.senai.sp.jandira.DAO.EspecialidadeDAO;
 import br.senai.sp.jandira.DAO.MedicoDAO;
 import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.OperacaoEnum;
+import java.text.Format;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 public class MedicoJDialog extends javax.swing.JDialog {
-
+    
     private Medico medico;
     private OperacaoEnum operacao;
-
+    
     public MedicoJDialog(
             java.awt.Frame parent,
             boolean modal,
             OperacaoEnum operacao) {
-
+        
         super(parent, modal);
         initComponents();
         this.operacao = operacao;
     }
-
+    
     public MedicoJDialog(
             java.awt.Frame parent,
             boolean modal,
@@ -30,33 +31,35 @@ public class MedicoJDialog extends javax.swing.JDialog {
             OperacaoEnum operacao) {
         super(parent, modal);
         initComponents();
-
-        medico = m;
+        
+        this.medico = medico;
         this.operacao = operacao;
         preencherFormulario();
     }
-
+    
     public void preencherFormulario() {
-
+        
         jTextFieldCódigo2.setText(medico.getCodigo().toString());
+        jTextFieldNomeDoMedico.setText(medico.getNome());
         jTextFieldCRM.setText(medico.getCrm());
         jTextFieldEmail.setText(medico.getEmail());
         jTextFieldTelefone.setText(medico.getTelefone());
+       
     }
-
+    
     private void preencherTitulo() {
         labelTitulo.setText("médico - " + operacao);
-
+        
         if (operacao == OperacaoEnum.EDITAR) {
             iconAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/adicionar(1).png")));
-
+            
         } else {
             iconAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/editar(1).png")));
-
+            
         }
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -79,7 +82,7 @@ public class MedicoJDialog extends javax.swing.JDialog {
         jTextFieldTelefone = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
         jLabelListaDeEspecialidades = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPanelLista = new javax.swing.JScrollPane();
         jListTabelaEspecialidades = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListDeEspecialidadeDoMedico = new javax.swing.JList<>();
@@ -210,15 +213,10 @@ public class MedicoJDialog extends javax.swing.JDialog {
         jPanelInformacoesDosMedicos.add(jLabelListaDeEspecialidades);
         jLabelListaDeEspecialidades.setBounds(20, 160, 130, 16);
 
-        jListTabelaEspecialidades.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jListTabelaEspecialidades);
+        jScrollPanelLista.setViewportView(jListTabelaEspecialidades);
 
-        jPanelInformacoesDosMedicos.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 180, 120, 146);
+        jPanelInformacoesDosMedicos.add(jScrollPanelLista);
+        jScrollPanelLista.setBounds(20, 180, 120, 140);
 
         jListDeEspecialidadeDoMedico.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -266,20 +264,20 @@ public class MedicoJDialog extends javax.swing.JDialog {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         if (jTextFieldCRM.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo 'operadora' não pode estar vazio.");
+            JOptionPane.showMessageDialog(null, "O campo 'CRM' não pode estar vazio.");
             jTextFieldCRM.grabFocus();
-        } else if (jTextFieldTelefone.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo 'número' não pode estar vazio.");
-            jTextFieldTelefone.grabFocus();
-        } else if (jTextFieldDataDeNascimento.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo 'validade' não pode estar vazio.");
-            jTextFieldDataDeNascimento.grabFocus();
-        } else if (jTextFieldEmail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo 'validade' não pode estar vazio.");
-            jTextFieldEmail.grabFocus();
         } else if (jTextFieldNomeDoMedico.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo 'validade' não pode estar vazio.");
+            JOptionPane.showMessageDialog(null, "O campo 'Telefone' não pode estar vazio.");
+            jTextFieldNomeDoMedico.grabFocus();
+        } else if (jTextFieldTelefone.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo 'Data de Nascimento' não pode estar vazio.");
+            jTextFieldTelefone.grabFocus();
+        } else if (jTextFieldEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo 'E-mail' não pode estar vazio.");
             jTextFieldEmail.grabFocus();
+        } else if (jTextFieldDataDeNascimento.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo 'Nome do médico' não pode estar vazio.");
+            jTextFieldDataDeNascimento.grabFocus();
         } else {
             if (operacao == OperacaoEnum.ADICIONA) {
                 adicionar();
@@ -317,45 +315,48 @@ public class MedicoJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
     private void adicionar() {
-
+        
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
+        
         Medico medico = new Medico();
+        
         medico.setCrm(jTextFieldCRM.getText());
         medico.setEmail(jTextFieldEmail.getText());
         medico.setNome(jTextFieldNomeDoMedico.getText());
         medico.setTelefone(jTextFieldTelefone.getText());
         medico.setdataDeNascimento(LocalDate.parse(jTextFieldDataDeNascimento.getText(), formato));
-
+        
+        System.out.println(medico.getdataDeNascimento());
+        
         MedicoDAO.gravar(medico);
-
+        
         JOptionPane.showMessageDialog(
                 this,
                 "Médico gravado com sucesso!",
                 "Médico",
                 JOptionPane.INFORMATION_MESSAGE);
-
+        
         dispose();
     }
-
-    public void editar() {
+    
+    private void editar() {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
+        
         medico.setCrm(jTextFieldCRM.getText());
-        medico.setEmail(jTextFieldEmail.getText());
         medico.setNome(jTextFieldNomeDoMedico.getText());
+        medico.setEmail(jTextFieldEmail.getText());
         medico.setTelefone(jTextFieldTelefone.getText());
         medico.setdataDeNascimento(LocalDate.parse(jTextFieldDataDeNascimento.getText(), formato));
-
+        
         MedicoDAO.atualizar(medico);
         JOptionPane.showMessageDialog(
                 this,
                 "Médico atualizado com sucesso!",
                 "Editar Médico",
                 JOptionPane.INFORMATION_MESSAGE);
-
+        
         dispose();
-
+        
     }
 
 
@@ -377,8 +378,8 @@ public class MedicoJDialog extends javax.swing.JDialog {
     private javax.swing.JList<String> jListTabelaEspecialidades;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelInformacoesDosMedicos;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPanelLista;
     private javax.swing.JTextField jTextFieldCRM;
     private javax.swing.JTextField jTextFieldCódigo2;
     private javax.swing.JTextField jTextFieldDataDeNascimento;
@@ -388,8 +389,16 @@ public class MedicoJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
 
-   private void preencherListaEspecialidade() {
-        jListTabelaEspecialidades.setModel(EspecialidadeDAO.preencherEspecialidade());
+    private String[] pegarEspecialidade() {
+        String[] teste = {"agua"};
+        return teste;
     }
 
+    private void pegarLista() {
+        
+        jScrollPanelLista.setViewportView(jListTabelaEspecialidades);
+        jListTabelaEspecialidades.setListData(pegarEspecialidade());
+        
+    }
+    
 }

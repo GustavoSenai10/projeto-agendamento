@@ -9,8 +9,10 @@ import javax.swing.JTable;
 public class JPanelMedico extends javax.swing.JPanel {
     
      private  int linha;
-    public JPanelMedico() {
+    
+     public JPanelMedico() {
         initComponents();
+        MedicoDAO.criarListaDeMedicos();
         ajustarTabela();
         prenccherTabela();
     }
@@ -111,7 +113,7 @@ public class JPanelMedico extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
-        if (getLinha() != 1) {
+        if (getLinha() != -1) {
             excluirMedico();
         } else {
             JOptionPane.showMessageDialog(this,
@@ -151,14 +153,9 @@ public class JPanelMedico extends javax.swing.JPanel {
 
          Medico medico = MedicoDAO.getmedico(getCodigo());
 
-        MedicoJDialog Medico
-                = new MedicoJDialog(
-                        null,
-                        true,
-                        medico,
-                        OperacaoEnum.EDITAR);
+        MedicoJDialog medicoJDialog = new MedicoJDialog(null, true, OperacaoEnum.EDITAR);
 
-        Medico.setVisible(true);
+        medicoJDialog.setVisible(true);
         prenccherTabela();
     }
      private void excluirMedico(){
@@ -196,16 +193,5 @@ public class JPanelMedico extends javax.swing.JPanel {
         //bloquear a edição das celulas da tabela
         tabelaDeMedico.setDefaultEditor(Object.class, null);
 
-        // Definir a largura das calunas
-         tabelaDeMedico.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        tabelaDeMedico.getColumnModel().getColumn(0).setPreferredWidth(200);
-        tabelaDeMedico.getColumnModel().getColumn(1).setPreferredWidth(300);
-        tabelaDeMedico.getColumnModel().getColumn(2).setPreferredWidth(490);
-
     }
-
-
-
-
-
 }
