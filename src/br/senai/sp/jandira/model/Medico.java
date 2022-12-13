@@ -40,14 +40,14 @@ public class Medico {
 
     }
 
-    public Medico( Integer codigo,
+    public Medico(Integer codigo,
             String crm,
             String telefone,
-           String nome,LocalDate DataDeNascimeto) {
+            String nome, LocalDate DataDeNascimeto) {
 
         this.crm = crm;
         this.nome = nome;
-        this.dataDeNascimento=DataDeNascimeto;
+        this.dataDeNascimento = DataDeNascimeto;
         this.telefone = telefone;
         this.codigo = codigo;
         this.contador = codigo;
@@ -112,7 +112,7 @@ public class Medico {
     public void setdataDeNascimento(LocalDate dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
-    
+
     public String getmedicoSeparadosPorPontoEVirgula() {
         return this.codigo + ";" + this.crm + ";" + this.nome + ";" + this.dataDeNascimento + ";" + this.telefone + ";" + this.especialidade;
     }

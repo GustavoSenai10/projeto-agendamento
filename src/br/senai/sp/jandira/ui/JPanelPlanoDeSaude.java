@@ -127,7 +127,7 @@ public class JPanelPlanoDeSaude extends javax.swing.JPanel {
         if (getLinha() != -1) {
             editarPlanoDeSaude();
         } else {
-            JOptionPane.showMessageDialog(this, "Por favor Selecione o Plano de Saúde que você deseja editar.", "Especialidade", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(this, "Por favor Selecione o Plano de Saúde que você deseja editar.", "Especialidade", JOptionPane.WARNING_MESSAGE);
 
             PlanoDeSaudeJDialog plano
                     = new PlanoDeSaudeJDialog(null, true, OperacaoEnum.EDITAR);

@@ -42,6 +42,7 @@ public class PlanoDeSaude {
         gerarCodigo();
 
     }
+
     public PlanoDeSaude(String operadora,
             String categoria,
             String numero,
@@ -51,13 +52,11 @@ public class PlanoDeSaude {
         this.categoria = categoria;
         this.numero = numero;
         this.validade = validade;
-        this.codigo= codigo;
+        this.codigo = codigo;
         this.contador = codigo;
 
     }
-    
-    
-    
+
     //MÉTODOS 
     //Código
     public Integer getCodigo() {
@@ -106,6 +105,6 @@ public class PlanoDeSaude {
     }
 
     public String getPlanoDeSaudeSeparadoPorPontoEVirgula() {
-        return this.codigo + ";" + this.operadora + ";"+ this.numero + ";" + this.categoria + ";" + this.validade;
+        return this.codigo + ";" + this.operadora + ";" + this.numero + ";" + this.categoria + ";" + this.validade;
     }
 }

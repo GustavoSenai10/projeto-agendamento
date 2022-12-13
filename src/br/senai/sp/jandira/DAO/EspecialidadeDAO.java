@@ -151,16 +151,12 @@ public class EspecialidadeDAO {
 
     }
 
-    public static DefaultListModel<Especialidade> preencherEspecialidade() {
-        DefaultListModel<Especialidade> listaEspecialidade = new DefaultListModel<>();
-        for (Especialidade listar : getEspecialidades()) {
-            listaEspecialidade.addElement(listar);
-            listaEspecialidade.toString();
+    public static DefaultListModel<String> getListaEspecialidade() {
+        DefaultListModel<String> listaEspecialidade = new DefaultListModel<>();
+        for (Especialidade especialidade : especialidades) {
+            listaEspecialidade.addElement(especialidade.getCodigo() + "-" + especialidade.getNome());
+
         }
-        
         return listaEspecialidade;
     }
-    
-    
-
 }

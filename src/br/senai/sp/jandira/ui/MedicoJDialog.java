@@ -22,6 +22,7 @@ public class MedicoJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.operacao = operacao;
+        addList();
     }
     
     public MedicoJDialog(
@@ -32,9 +33,10 @@ public class MedicoJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        this.medico = medico;
+        this.medico = m;
         this.operacao = operacao;
         preencherFormulario();
+        addList();
     }
     
     public void preencherFormulario() {
@@ -211,7 +213,7 @@ public class MedicoJDialog extends javax.swing.JDialog {
         jLabelListaDeEspecialidades.setForeground(new java.awt.Color(255, 255, 255));
         jLabelListaDeEspecialidades.setText("Lista De Especialidades:");
         jPanelInformacoesDosMedicos.add(jLabelListaDeEspecialidades);
-        jLabelListaDeEspecialidades.setBounds(20, 160, 130, 16);
+        jLabelListaDeEspecialidades.setBounds(20, 160, 140, 16);
 
         jScrollPanelLista.setViewportView(jListTabelaEspecialidades);
 
@@ -388,17 +390,11 @@ public class MedicoJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldTelefone;
     private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
-
-    private String[] pegarEspecialidade() {
-        String[] teste = {"agua"};
-        return teste;
-    }
-
-    private void pegarLista() {
-        
-        jScrollPanelLista.setViewportView(jListTabelaEspecialidades);
-        jListTabelaEspecialidades.setListData(pegarEspecialidade());
-        
-    }
+    private void addList (){
+        jListTabelaEspecialidades.setModel(EspecialidadeDAO.getListaEspecialidade());
     
+    
+    }
+
+
 }

@@ -13,7 +13,6 @@ public class JPanelMedico extends javax.swing.JPanel {
      public JPanelMedico() {
         initComponents();
         MedicoDAO.criarListaDeMedicos();
-        ajustarTabela();
         prenccherTabela();
     }
     private int getLinha(){
@@ -153,7 +152,7 @@ public class JPanelMedico extends javax.swing.JPanel {
 
          Medico medico = MedicoDAO.getmedico(getCodigo());
 
-        MedicoJDialog medicoJDialog = new MedicoJDialog(null, true, OperacaoEnum.EDITAR);
+        MedicoJDialog medicoJDialog = new MedicoJDialog(null, true,medico, OperacaoEnum.EDITAR);
 
         medicoJDialog.setVisible(true);
         prenccherTabela();

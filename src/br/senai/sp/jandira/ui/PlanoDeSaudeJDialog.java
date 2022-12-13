@@ -220,12 +220,12 @@ public class PlanoDeSaudeJDialog extends javax.swing.JDialog {
         } else if (jTextFieldValidade.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo 'validade' não pode estar vazio.");
             jTextFieldValidade.grabFocus();
-       }else{
-            if (operacao == OperacaoEnum.ADICIONA) {
-            adicionar();
         } else {
-            editar();
-        }
+            if (operacao == OperacaoEnum.ADICIONA) {
+                adicionar();
+            } else {
+                editar();
+            }
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 

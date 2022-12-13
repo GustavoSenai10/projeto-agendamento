@@ -298,7 +298,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
         getContentPane().add(panelPlanoDeSaude);
         panelPlanoDeSaude.setVisible(false);
-        
+
         panelMedico = new JPanelMedico();
 
         panelMedico.setBounds(
@@ -306,9 +306,7 @@ public class HomeFrame extends javax.swing.JFrame {
                 pos_Y,
                 LARGURA,
                 ALATURA);
-        
-        
-        
+
         getContentPane().add(panelMedico);
         panelMedico.setVisible(false);
     }
